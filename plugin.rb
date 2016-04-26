@@ -12,28 +12,28 @@
 
 after_initialize do
 
-  module SitepointDesign
-    class Engine < ::Rails::Engine
-      engine_name "sitepoint_design"
-      isolate_namespace SitepointDesign
-    end
-
-    Rails.application.config.assets.paths.unshift File.expand_path('../assets', __FILE__)
-  end
-
-  # app/models/topic_posters_summary.rb
-  TopicPostersSummary.class_eval do
-    def user_ids_with_descriptions
-      user_ids.zip([
-        :original_poster,
-        :most_recent_poster
-      ].map { |description| I18n.t(description) })
-    end
-
-    def top_posters
-      user_ids.map { |id| avatar_lookup[id] }.compact.uniq.take(2)
-    end
-  end
+#  module SitepointDesign
+#    class Engine < ::Rails::Engine
+#      engine_name "sitepoint_design"
+#      isolate_namespace SitepointDesign
+#    end
+#
+#    Rails.application.config.assets.paths.unshift File.expand_path('../assets', __FILE__)
+#  end
+#
+#  # app/models/topic_posters_summary.rb
+#  TopicPostersSummary.class_eval do
+#    def user_ids_with_descriptions
+#      user_ids.zip([
+#        :original_poster,
+#        :most_recent_poster
+#      ].map { |description| I18n.t(description) })
+#    end
+#
+#    def top_posters
+#      user_ids.map { |id| avatar_lookup[id] }.compact.uniq.take(2)
+#    end
+#  end
 
   # SP customisation: add SiteCustomization to add in crawler links
   #  header = <<-EOS.strip_heredoc.chomp
@@ -53,25 +53,25 @@ after_initialize do
   #    <noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=3/2Rk1ao6C526C" style="display:none" height="1" width="1" alt="" /></noscript>
   #    <!-- End Alexa Certify Javascript -->
   #    EOS
-
-  begin
-    if User.exists?
-      sitepoint_site_customization = SiteCustomization.find_or_create_by({
-        name: "SitePoint Crawler links",
-        header: header,
-        mobile_header: header,
-        enabled: true,
-        user_id: User.first.id,
-        head_tag: ''
-      })
-      # cleanup old customizations
-      SiteCustomization.where(name: sitepoint_site_customization.name).
-        where.not(id: sitepoint_site_customization.id).
-        delete_all
-    end
-  rescue ActiveRecord::StatementInvalid
-    # This happens when you run db:migrate on a database that doesn't have any tables yet.
-  end
+#
+#  begin
+#    if User.exists?
+#      sitepoint_site_customization = SiteCustomization.find_or_create_by({
+#        name: "SitePoint Crawler links",
+#        header: header,
+#        mobile_header: header,
+#        enabled: true,
+#        user_id: User.first.id,
+#        head_tag: ''
+#      })
+#      # cleanup old customizations
+#      SiteCustomization.where(name: sitepoint_site_customization.name).
+#        where.not(id: sitepoint_site_customization.id).
+#        delete_all
+#    end
+#  rescue ActiveRecord::StatementInvalid
+#    # This happens when you run db:migrate on a database that doesn't have any tables yet.
+#  end
 end
 
 ## Adding To Discourse
