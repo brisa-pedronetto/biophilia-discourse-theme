@@ -1,39 +1,35 @@
-# name: discourse-theme
-# about: sitepoint.com/forum theme
+# name: biophilia-discourse-theme
+# about: Biophilia Educationak Forum Theme
 # authors: Jude Aakjaer, James Hunter, Kelle-Lee Connolly
-
-# When styles are not working or are not updating, try:
-# - stopping server
-# - sitepoint/discourse rm -rf tmp
-# - delete sitepoint/discourse/public/uploads/stylesheet-cache
-# - restart server
-# If styles are still not updating, there is probably a syntax error in the SCSS causing a silent failure and causing the file not being processed.
-# To be 100% sure you can also enable Chrome Dev Tools -> Settings -> General -> Disable cache (while DevTools is open), but note it leads to 30s onload times.
 
 after_initialize do
 
-#  module SitepointDesign
-#    class Engine < ::Rails::Engine
-#      engine_name "sitepoint_design"
-#      isolate_namespace SitepointDesign
-#    end
-#
-#    Rails.application.config.assets.paths.unshift File.expand_path('../assets', __FILE__)
-#  end
-#
-#  # app/models/topic_posters_summary.rb
-#  TopicPostersSummary.class_eval do
-#    def user_ids_with_descriptions
-#      user_ids.zip([
-#        :original_poster,
-#        :most_recent_poster
-#      ].map { |description| I18n.t(description) })
-#    end
-#
-#    def top_posters
-#      user_ids.map { |id| avatar_lookup[id] }.compact.uniq.take(2)
-#    end
-#  end
+  module SitepointDesign
+      
+    class Engine < ::Rails::Engine
+      engine_name "sitepoint_design"
+      isolate_namespace SitepointDesign
+    end
+
+    Rails.application.config.assets.paths.unshift File.expand_path('../assets', __FILE__)
+      
+  end
+
+  # app/models/topic_posters_summary.rb
+  TopicPostersSummary.class_eval do
+      
+    def user_ids_with_descriptions
+      user_ids.zip([
+        :original_poster,
+        :most_recent_poster
+      ].map { |description| I18n.t(description) })
+    end
+
+    def top_posters
+      user_ids.map { |id| avatar_lookup[id] }.compact.uniq.take(2)
+    end
+      
+  end
 
   # SP customisation: add SiteCustomization to add in crawler links
   #  header = <<-EOS.strip_heredoc.chomp
@@ -53,31 +49,31 @@ after_initialize do
   #    <noscript><img src="https://d5nxst8fruw4z.cloudfront.net/atrk.gif?account=3/2Rk1ao6C526C" style="display:none" height="1" width="1" alt="" /></noscript>
   #    <!-- End Alexa Certify Javascript -->
   #    EOS
-#
-#  begin
-#    if User.exists?
-#      sitepoint_site_customization = SiteCustomization.find_or_create_by({
-#        name: "SitePoint Crawler links",
-#        header: header,
-#        mobile_header: header,
-#        enabled: true,
-#        user_id: User.first.id,
-#        head_tag: ''
-#      })
-#      # cleanup old customizations
-#      SiteCustomization.where(name: sitepoint_site_customization.name).
-#        where.not(id: sitepoint_site_customization.id).
-#        delete_all
-#    end
-#  rescue ActiveRecord::StatementInvalid
-#    # This happens when you run db:migrate on a database that doesn't have any tables yet.
-#  end
+
+  #  begin
+  #    if User.exists?
+  #      sitepoint_site_customization = SiteCustomization.find_or_create_by({
+  #        name: "SitePoint Crawler links",
+  #        header: header,
+  #        mobile_header: header,
+  #        enabled: true,
+  #        user_id: User.first.id,
+  #        head_tag: ''
+  #      })
+  #      # cleanup old customizations
+  #      SiteCustomization.where(name: sitepoint_site_customization.name).
+  #        where.not(id: sitepoint_site_customization.id).
+  #        delete_all
+  #    end
+  #  rescue ActiveRecord::StatementInvalid
+  #    # This happens when you run db:migrate on a database that doesn't have any tables yet.
+  #  end
+    
 end
 
 ## Adding To Discourse
-#register_custom_html extraNavItem: "<li id='faq-menu-item'><a href='/faq'>FAQ</a></li>"
 #register_asset "javascripts/pm_button.js.es6", :client_side
-#register_asset "stylesheets/common/foundation/variables.scss", :variables # other things need these variables
+register_asset "stylesheets/common/foundation/variables.scss", :variables # other things need these variables
 
 ## General Changes
 register_asset "stylesheets/common/components/banner.css.scss" # Make the banner grey
