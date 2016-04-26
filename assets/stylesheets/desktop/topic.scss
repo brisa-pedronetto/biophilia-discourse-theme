@@ -1,0 +1,17 @@
+@import "common/foundation/variables";
+
+#topic-progress {
+  color: $primary;
+
+  i.fa {
+    right: 15px;
+  }
+
+  h4 {
+    font-weight: normal;
+  }
+
+  .bg {
+    background-color: $green-SP;
+  }
+}

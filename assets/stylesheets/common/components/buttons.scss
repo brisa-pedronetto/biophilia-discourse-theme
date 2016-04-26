@@ -1,0 +1,16 @@
+@import "common/foundation/variables";
+@import "common/foundation/mixins";
+
+.btn {
+  border-radius: $border-radius-default-SP;
+}
+
+#create-topic, #create-category, .btn-primary, .post-controls .actions button.create {
+  border-radius: $border-radius-default-SP;
+  background: $red-SP;
+  color: white;
+
+  &:hover, &:focus {
+    background-color: $red-darker-SP;
+  }
+}

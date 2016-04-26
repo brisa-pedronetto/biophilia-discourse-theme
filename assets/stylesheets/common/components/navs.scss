@@ -1,0 +1,78 @@
+@import "common/foundation/variables";
+@import "common/foundation/mixins";
+@import "common/foundation/helpers";
+
+.nav-pills {
+  > li {
+    margin-right: 0;
+
+    > a {
+      border-top: 1px solid $gray-lighter-SP;
+      border-bottom: 1px solid $gray-lighter-SP;
+      color: $gray-text-SP;
+      font-weight: $font-weight-medium-bold-SP;
+    }
+
+    &:first-of-type {
+      > a {
+        border-left: 1px solid $gray-lighter-SP;
+        border-top-left-radius: $border-radius-default-SP;
+        border-bottom-left-radius: $border-radius-default-SP;
+      }
+    }
+
+    &:last-of-type {
+      > a {
+        border-right: 1px solid $gray-lighter-SP;
+        border-top-right-radius: $border-radius-default-SP;
+        border-bottom-right-radius: $border-radius-default-SP;
+      }
+    }
+
+    &.active > a,
+    > a.active {
+      border-color: $red-SP;
+    }
+  }
+}
+
+// Stacked nav
+// --------------------------------------------------
+
+.nav-stacked {
+  border-radius: $border-radius-default-SP;
+
+  > li {
+    border: none;
+
+    > a {
+      border: 1px solid $gray-lighter-SP;
+      border-bottom: none;
+      color: $gray-text-SP;
+    }
+
+    &:last-of-type {
+      > a {
+        border-bottom: 1px solid $gray-lighter-SP;
+      }
+    }
+
+    &.active {
+      > a {
+        border: 1px solid $red-SP;
+      }
+
+      + script + script + li {
+        > a {
+          border-top: none;
+        }
+      }
+    }
+  }
+
+  .active > a,
+  .active .fa-chevron-right {
+    color: #fff;
+    background-color: $red-SP;
+  }
+}

@@ -1,0 +1,51 @@
+@import "common/foundation/variables";
+@import "common/foundation/mixins";
+@import "common/foundation/helpers";
+
+.discourse-no-touch .post-cloak .gutter .reply-new {
+  opacity: 1;
+}
+
+nav.post-controls {
+  .show-replies, .actions button {
+    border-radius: $border-radius-default-SP;
+  }
+}
+
+span.post-count {
+  background: $red-SP;
+  color: #fff;
+  opacity: 1;
+}
+
+.extra-info {
+  padding: 0 8px;
+
+  h1 {
+    color: white;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 18px;
+  }
+
+  .badge-wrapper {
+    margin-top: 0;
+
+  }
+}
+
+.post-hidden {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.topic-post article.boxed {
+  line-height: 1.4;
+}
+
+a.post-date span {
+  margin-right: 1em;
+}
+
+a.post-date:after {
+  content: "#"attr(data-post-number);
+}

@@ -1,0 +1,36 @@
+@import "common/foundation/variables";
+
+.names span {
+  font-size: inherit;
+
+  a {
+    color: $tertiary;
+  }
+
+  &.Administrators a {
+    color: #dc2e17;
+  }
+
+  &.TeamLeaders a {
+    color: #011a74;
+  }
+
+  &.Advisors a {
+    color: #1b815c;
+  }
+
+  &.Mentors a {
+    color: #ba5401;
+  }
+
+  &.TeamSitePoint + .user-title a:before {
+    content: "[SitePoint]";
+    margin-right: 8px;
+    color: #999;
+  }
+}
+
+.contents .cooked {
+  margin-top: 1em; // ensure enough vertical separation between topic header and topic content even if content starts with a blockquote or an UL tag (rather than the usual P)
+  margin-bottom: 1em; // mobile: prevent missing vert separation between blockquote and reply button if last thing in topic contents is a blockquote
+}

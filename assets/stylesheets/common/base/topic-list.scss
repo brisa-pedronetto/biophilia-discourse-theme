@@ -1,0 +1,56 @@
+@import "common/foundation/variables";
+@import "common/foundation/mixins";
+
+.contents .topic-list.categories td, .mobile-view .category-list-item.category {
+  border-left:none;
+
+  .category-name {
+    @include border-radius-all($border-radius-default-SP);
+    background: rgba(0,0,0,0.05);
+    color: black;
+    padding: 5px 13px;
+    border-radius: 3px;
+    display: inline-block;
+    width: 9em;
+    text-align: center;
+  }
+}
+
+.contents .topic-list {
+  td, th {
+    &.posters {
+      width: 60px;
+      min-width: 60px;
+    }
+  }
+}
+
+.badge-wrapper.box span.badge-category-bg, .badge-wrapper.box span.badge-category-parent-bg {
+  @include border-radius-all($border-radius-default-SP);
+}
+
+.badge-wrapper.box {
+  max-width: 130px;
+  padding: 3px 0 0 0;
+  text-align: center;
+  width: 100%;
+}
+
+.menu-panel .badge-wrapper.box, .title-wrapper .badge-wrapper.box, #suggested-topics h3 .badge-wrapper.box {
+  width: auto;
+}
+
+.topic-list th.category {
+  width: 140px;
+}
+
+.extra-info .discourse-tag {
+  font-size: 1em;
+}
+
+.discourse-tags:before, .list-tags:not(:empty):before {
+  font-family: 'FontAwesome';
+  content: "\F02C";
+  color: #919191;
+  vertical-align: top;
+}

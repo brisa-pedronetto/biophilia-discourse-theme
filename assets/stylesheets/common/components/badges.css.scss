@@ -1,0 +1,7 @@
+.list-controls .category-breadcrumb a.badge-category {
+  border-radius: $border-radius-default-SP 0 0 $border-radius-default-SP;
+}
+
+.list-controls .category-breadcrumb a.badge-category.category-dropdown-button {
+  border-radius: 0 $border-radius-default-SP $border-radius-default-SP 0;
+}
